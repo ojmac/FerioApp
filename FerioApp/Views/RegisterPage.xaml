@@ -1,0 +1,78 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FerioApp.RegisterPage"
+             BackgroundColor="#DEE1E6">
+	<ScrollView>
+		<VerticalStackLayout Spacing="25" Padding="10" HorizontalOptions="Center">
+
+			<!-- Imagen Superior -->
+			<Image
+                Source="ferio7.jpg"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Ferio bot smiling for registration" />
+
+			<!-- Título de la Página -->
+			<Label Text="Regístrate en Ferio"
+                   FontFamily="Poppins"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" />
+
+			<!-- Formulario de Registro -->
+			<Frame Padding="20" CornerRadius="10" BackgroundColor="#E6E3DE">
+				<VerticalStackLayout Spacing="10">
+
+					<!-- Campo: Nombre Completo -->
+					<Entry x:Name="nameEntry"
+                           Placeholder="Nombre completo"
+                           TextColor="Black"
+                           BackgroundColor="White" />
+
+					<!-- Campo: Correo Electrónico -->
+					<Entry x:Name="emailEntry"
+                           Placeholder="Correo electrónico"
+                           Keyboard="Email"
+                           TextColor="Black"
+                           BackgroundColor="White" />
+
+					<!-- Campo: Contraseña -->
+					<Entry x:Name="passwordEntry"
+                           Placeholder="Contraseña"
+                           IsPassword="True"
+                           TextColor="Black"
+                           BackgroundColor="White" />
+
+					<!-- Campo: Confirmar Contraseña -->
+					<Entry x:Name="confirmPasswordEntry"
+                           Placeholder="Confirmar contraseña"
+                           IsPassword="True"
+                           TextColor="Black"
+                           BackgroundColor="White" />
+
+					<!-- Botón para Enviar el Registro -->
+					<Button Text="Registrarse"
+                            BackgroundColor="#007AFF"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnRegisterClicked" />
+
+					<!-- Indicador de Actividad -->
+					<ActivityIndicator x:Name="activityIndicator"
+                                       IsVisible="False"
+                                       IsRunning="False" />
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- Botón para Volver a Login -->
+			<Frame Padding="0" CornerRadius="10" BackgroundColor="#E6E3DE">
+				<Button Text="¿Ya tienes una cuenta? Inicia sesión"
+                        BackgroundColor="#E6E3DE"
+                        TextColor="#007AFF"
+                        FontAttributes="Bold"
+                        Clicked="OnNavigateToLoginClicked" />
+			</Frame>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

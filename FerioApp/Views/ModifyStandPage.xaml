@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FerioApp.ModifyStandPage"
+             Title="Modificar Stand">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!--<Label Text="Modificar Stand" FontSize="28" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#2C3E50"/>-->
+
+            <Entry x:Name="nombreEntry" Placeholder="Nombre del Stand"/>
+            <Editor x:Name="descripcionEditor" Placeholder="Descripción del Stand" HeightRequest="100"/>
+            <Entry x:Name="ubicacionEntry" Placeholder="Ubicación del Stand"/>
+            <Entry x:Name="horariosEntry" Placeholder="Horarios del Stand"/>
+            <Entry x:Name="enlaceWebEntry" Placeholder="Enlace Web"/>
+            <Entry x:Name="contactoEntry" Placeholder="Contacto"/>
+            <Entry x:Name="logoEntry" Placeholder="Logo (URL)" />
+            <Entry x:Name="usuarioEntry" Placeholder="id del expositor" />
+            <Label Text="Selecciona categorías:" FontAttributes="Bold" />
+
+
+            <CollectionView x:Name="categoriasCollection" SelectionMode="Single" ItemsSource="{Binding CategoriasDisponibles}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <CheckBox IsChecked="{Binding IsSelected}" />
+                            <Label Text="{Binding Nombre}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Modificar Stand" BackgroundColor="Aquamarine" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="55" Clicked="OnModifyStandClicked"/>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

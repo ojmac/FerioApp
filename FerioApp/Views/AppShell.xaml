@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FerioApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FerioApp"
+    
+    Shell.FlyoutBehavior="Disabled"
+    Title="FerioApp">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior 
+            IconOverride="Ressources/Images/atras.png"  
+            Command="{Binding GoBackCommand}" />
+    </Shell.BackButtonBehavior>
+
+    <!-- Página de Pruebas -->
+    
+
+
+    <!-- Páginas accesibles sin autenticación -->
+
+    <!-- Página de Login -->
+    <ShellContent 
+        Title="Login"
+        ContentTemplate="{DataTemplate local:LoginPage}" 
+        Route="loginPage" />
+
+
+    <!-- Página de Registro-->
+    <ShellContent 
+       Title="Registro"
+       Route="register" 
+       ContentTemplate="{DataTemplate local:RegisterPage}" />
+
+
+    <!-- Área privada (sólo accesible si se está autenticado) -->
+
+    <!-- Página de inicio (MainPage) -->
+
+    <ShellContent
+      Title="Ferio"
+      ContentTemplate="{DataTemplate local:MainPage}"
+      Route="mainPage" />
+
+    <!-- Página de inicio (ModifyStandPage) -->
+    <ShellContent
+      Title="Ferio"
+      ContentTemplate="{DataTemplate local:ModifyStandPage}"
+      Route="modifyStandPage" />
+
+    <!-- Página de Usuarios (UsuarioPage) sólo Organizador -->
+    <ShellContent
+        Title="Usuario"
+        ContentTemplate="{DataTemplate local:UsuarioPage}"
+        Route="usuarioPage" />
+
+    <!-- Página de avisos -->
+    <ShellContent 
+        Title="Avisos"
+        Route="mensajes" 
+        ContentTemplate="{DataTemplate local:MensajesPage}" />
+
+    <!-- Página de info de Stands -->
+    <ShellContent 
+        Title="Stands"
+        Route="stands" 
+        ContentTemplate="{DataTemplate local:StandsPage}" />
+
+    <!-- Página de info de Stands-modificaciones-->
+    <ShellContent 
+        Title="Añadir Stands"
+        Route="stands" 
+        ContentTemplate="{DataTemplate local:AddStandPage}" />
+
+
+    <!-- Página de info de perfil usuario y modificaciones -->
+    <ShellContent
+         Title="MiPerfil"
+         Route="perfil" 
+         ContentTemplate="{DataTemplate local:PerfilPage}" />
+
+    <!-- Página de info de perfil usuario y modificaciones -->
+
+
+
+    <!-- Página de chatbot 
+    <ShellContent 
+        Title="Home"
+        Route="chatbot" 
+        ContentTemplate="{DataTemplate local:ChatbotPage}" />-->
+
+</Shell>

@@ -1,0 +1,58 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FerioApp.LoginPage"
+             BackgroundColor="#DEE1E6">
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="40" HorizontalOptions="Center">
+
+            <Image
+                Source="ferio7.jpg"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label Text="Bienvenido a Ferio"
+                   FontFamily="Poppins"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"/>
+
+                <Frame Padding="20" CornerRadius="10" BackgroundColor="#E6E3DE">
+                
+
+                    <VerticalStackLayout Spacing="15">
+
+                    <Entry x:Name="emailEntry"
+                           Placeholder="Correo electrónico"
+                           Keyboard="Email"
+                           TextColor="Black"
+                           BackgroundColor="White"/>
+
+                    <Entry x:Name="passwordEntry"
+                           Placeholder="Contraseña"
+                           IsPassword="True"
+                           TextColor="Black"
+                           BackgroundColor="White"/>
+
+                    <Button Text="Iniciar Sesión"
+                            BackgroundColor="#007AFF"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Clicked="OnLoginClicked"/>
+
+                    <ActivityIndicator x:Name="activityIndicator"
+                                       IsVisible="False"
+                                       IsRunning="False"/>
+                </VerticalStackLayout>
+            </Frame>
+            <Frame Padding="0" CornerRadius="10" BackgroundColor="#E6E3DE">
+                <Button Text="Registrarse"
+                    BackgroundColor="#E6E3DE"
+                    TextColor="#007AFF"
+                    FontAttributes="Bold"
+                    Clicked="OnRegisterClicked"/>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
