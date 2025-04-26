@@ -29,6 +29,14 @@ namespace FerioApp.Models
 
         [JsonPropertyName("contacto")]
         public string Contacto { get; set; }
+        [JsonPropertyName("posX")]
+        public int PosX { get; set; }
+        [JsonPropertyName("posY")]
+        public int PosY { get; set; }
+        [JsonPropertyName("width")]
+        public int Width { get; set; } = 2;
+        [JsonPropertyName("height")]
+        public int Height { get; set; } = 2;
 
         [JsonPropertyName("categoriaIds")]
         public List<int> CategoriaIds { get; set; }

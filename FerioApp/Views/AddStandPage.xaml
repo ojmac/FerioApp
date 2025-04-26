@@ -15,7 +15,11 @@
             <Entry x:Name="enlaceWebEntry" Placeholder="Enlace Web"/>
             <Entry x:Name="contactoEntry" Placeholder="Contacto"/>
             <Entry x:Name="logoEntry" Placeholder="Logo (URL)" />
-            <Entry x:Name="usuarioEntry" Placeholder="id del expositor" />
+            <Entry x:Name="usuarioEntry" Placeholder="id del expositor" Keyboard="Numeric"/>
+            <Entry x:Name="posXEntry" Placeholder="Posición X" Keyboard="Numeric"/>
+            <Entry x:Name="posYEntry" Placeholder="Posición Y" Keyboard="Numeric"/>
+            <Entry x:Name="widthEntry" Placeholder="Ancho" Keyboard="Numeric"/>
+            <Entry x:Name="heightEntry" Placeholder="Largo" Keyboard="Numeric"/>
             <Label Text="Selecciona categorías:" FontAttributes="Bold" />
 
 

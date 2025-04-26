@@ -19,7 +19,7 @@ namespace FerioApp
             PuedeEnviarMensajes.IsVisible = UsuarioService.UsuarioActual.IsExpositorOrOrganizer || UsuarioService.UsuarioActual.IsOrganizer;
 
             Shell.SetBackgroundColor(this, Color.FromArgb("#06D6A0"));
-            Shell.SetTitleColor(this, Color.FromArgb("#000000"));
+            Shell.SetTitleColor(this, Colors.White);
 
         }
 
@@ -111,7 +111,7 @@ namespace FerioApp
             var mensaje = e.Item as Mensaje;
             if (mensaje != null)
             {
-                await DisplayAlert(mensaje.Titulo, mensaje.Contenido, "OK");
+                await DisplayAlert(mensaje.Empresa, $"{mensaje.Titulo}\n\n{mensaje.Contenido}","OK" );
             }
         }
     }

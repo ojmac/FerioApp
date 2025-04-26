@@ -40,11 +40,6 @@ namespace FerioApp
                 client.Timeout = TimeSpan.FromSeconds(30);
             });
             
-            builder.Services.AddHttpClient<StandService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:7117");
-                client.Timeout = TimeSpan.FromSeconds(30);
-            });
             builder.Services.AddHttpClient<MensajeService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:7117");

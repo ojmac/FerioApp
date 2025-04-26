@@ -60,7 +60,7 @@ namespace FerioApp.Services
                     foreach (var element in jsonArray)
                     {
                         var stand = JsonSerializer.Deserialize<Stand>(element.GetRawText());
-                        Debug.WriteLine($"Stand: {stand.Nombre}, {stand.Descripcion}, {stand.Ubicacion}, {stand.Logo}");
+                        
                         stands.Add(stand);
                     }
 

@@ -33,9 +33,19 @@ public class Stand
     public string HorarioAtencion { get; set; } 
 
     [JsonPropertyName("categorias")]
-    public List<Categoria> CategoriaIds { get; set; } = new List<Categoria>(); 
+    public List<Categoria> CategoriaIds { get; set; } = new List<Categoria>();
+    [JsonPropertyName("posX")]
+    public int PosX { get; set; }
+    [JsonPropertyName("posY")]
+    public int PosY { get; set; }
+    [JsonPropertyName("width")]
+    public int Width { get; set; } = 2;
+    [JsonPropertyName("heigth")]
+    public int Height { get; set; } = 2;
+
 
     public ICommand ViewStandCommand { get; set; }
+    
     public List<StandCategoria> StandCategoria { get; set; }
 
 

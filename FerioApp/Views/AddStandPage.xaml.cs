@@ -66,6 +66,11 @@ namespace FerioApp
                 EnlaceWeb = enlaceWebEntry.Text,
                 Contacto = contactoEntry.Text,
                 UsuarioId = int.Parse(usuarioEntry.Text),
+                PosX = int.Parse(posXEntry.Text),
+                PosY = int.Parse(posYEntry.Text),
+                Width = int.Parse(widthEntry.Text),
+                Height = int.Parse(heightEntry.Text),
+
                 CategoriaIds = categoriaIdsSeleccionadas
             };
 
@@ -81,7 +86,6 @@ namespace FerioApp
 
             }
         }
-     
 
     }
 }

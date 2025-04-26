@@ -33,7 +33,7 @@ namespace FerioApp
             BindingContext = this;
 
             Shell.SetBackgroundColor(this, Color.FromArgb("#3A86FF"));
-            Shell.SetTitleColor(this, Color.FromArgb("#000000"));
+            Shell.SetTitleColor(this, Colors.White);
             _addStandPage = addStandPage;
         }
 
