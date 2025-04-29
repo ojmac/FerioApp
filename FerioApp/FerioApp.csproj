@@ -74,6 +74,10 @@
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 
+		<MauiXaml Update="Views\MapPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+
 		<MauiXaml Update="Views\ModifyStandPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -115,6 +119,14 @@
 	  <MauiXaml Remove="obj\**" />
 	  <None Remove="bin\**" />
 	  <None Remove="obj\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Views\MapPage.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Views\MapPage.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -80,8 +80,11 @@
          Route="perfil" 
          ContentTemplate="{DataTemplate local:PerfilPage}" />
 
-    <!-- Página de info de perfil usuario y modificaciones -->
-
+    <!-- Página del mapa -->
+    <ShellContent
+     Title="Mapa del sitio"
+     Route="mapa" 
+     ContentTemplate="{DataTemplate local:MapPage}" />
 
 
     <!-- Página de chatbot 

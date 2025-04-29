@@ -10,6 +10,8 @@ namespace FerioApp
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            var backendBaseUri = new Uri("https://localhost:7117");
+            var backendTimeout = TimeSpan.FromSeconds(30);
 
             builder
                 .UseMauiApp<App>() // Registra la clase App correctamente
@@ -21,29 +23,28 @@ namespace FerioApp
                     fonts.AddFont("Poppins-semiBold.ttf", "PoppinsSemiBold");
                 });
 
-            
             builder.Services.AddHttpClient("FerioBackend", client =>
             {
-                client.BaseAddress = new Uri("https://localhost:7117");
-                client.Timeout = TimeSpan.FromSeconds(30);
+                client.BaseAddress = backendBaseUri;
+                client.Timeout = backendTimeout;
             });
 
             // Registrar ApiService
             builder.Services.AddHttpClient<ApiService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:7117");
-                client.Timeout = TimeSpan.FromSeconds(30);
+                client.BaseAddress = backendBaseUri;
+                client.Timeout = backendTimeout;
             });
             builder.Services.AddHttpClient<StandService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:7117");
-                client.Timeout = TimeSpan.FromSeconds(30);
+                client.BaseAddress = backendBaseUri;
+                client.Timeout = backendTimeout;
             });
             
             builder.Services.AddHttpClient<MensajeService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:7117");
-                client.Timeout = TimeSpan.FromSeconds(30);
+                client.BaseAddress = backendBaseUri;
+                client.Timeout = backendTimeout;
             });
             
             builder.Services.AddTransient<UsuarioService>();
@@ -57,9 +58,7 @@ namespace FerioApp
             builder.Services.AddTransient<AddStandPage>();
             builder.Services.AddTransient<ModifyStandPage>();
             builder.Services.AddTransient<MensajesPage>();
-
-
-
+            builder.Services.AddTransient<MapPage>();
 
             return builder.Build();
         }

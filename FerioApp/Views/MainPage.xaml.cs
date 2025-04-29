@@ -74,7 +74,7 @@ namespace FerioApp
         // Navega al Mapa Interactivo
         private async void OnMapClicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new MapPage()); 
+            await Navigation.PushAsync(new MapPage()); 
         }
 
         // Navega a la Información de Expositores
