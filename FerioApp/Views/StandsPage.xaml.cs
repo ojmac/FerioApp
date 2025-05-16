@@ -102,6 +102,10 @@ namespace FerioApp
             await LoadStands();
 
         }
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//mainPage");
+        }
 
     }
 }

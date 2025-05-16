@@ -61,8 +61,7 @@ namespace FerioApp.Services
             try
             {   
                 var credentials = new { Email = email, Contrasena = password };
-                
-
+         
                 var json = JsonSerializer.Serialize(credentials);
                 Console.WriteLine($"Error en autenticación: {json}");
                 Debug.WriteLine($"Error en autenticación: {json}");
@@ -78,8 +77,7 @@ namespace FerioApp.Services
 
                 if (authResponse?.Token == null)
                     throw new Exception("Token inválido.");
-
-                
+     
                 var token = authResponse.Token.Trim();
                 Preferences.Set("AuthToken", token);
 

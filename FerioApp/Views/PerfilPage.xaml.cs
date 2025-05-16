@@ -132,12 +132,13 @@ namespace FerioApp
 
             _httpclient = httpClient;
             _standService = standService;
-        BindingContext = this;
+            BindingContext = this; 
+
             ConfigureProfile();
-            _ = LoadUserProfile();
+            Task.Run(async () => await LoadUserProfile());
 
 
-            
+
             Shell.SetBackgroundColor(this, Color.FromArgb("#FFBE0B"));
             Shell.SetTitleColor(this, Colors.White);
         }
@@ -275,7 +276,7 @@ namespace FerioApp
             try
             {
                 var Token = _token;
-
+                await DisplayAlert("Éxito", "aqui llego", "OK");
 
                 if (string.IsNullOrEmpty(Token))
                 {
@@ -291,9 +292,10 @@ namespace FerioApp
 
                 var url = $"/api/usuarios/{_userProfile.Id}";
                 var response = await _httpclient.PutAsync(url, content);
-
+                await DisplayAlert("Error", "aqui tb", "OK");
                 if (response.IsSuccessStatusCode)
                 {
+                    await DisplayAlert("Error", "aqui estoy", "OK");
                     var userProfileJson = JsonSerializer.Serialize(_userProfile);
                     await SecureStorage.SetAsync("user_data", userProfileJson);
                     await DisplayAlert("Éxito", "Tus datos han sido actualizados correctamente.", "OK");
@@ -301,6 +303,8 @@ namespace FerioApp
                 }
                 else
                 {
+
+                    await DisplayAlert("Error", " po tb aqui estoy", "OK");
                     var error = await response.Content.ReadAsStringAsync();
                     await DisplayAlert("Error en la API", $"Código: {(int)response.StatusCode}\nMensaje: {error}", "OK");
                     await Navigation.PopAsync();
@@ -322,8 +326,12 @@ namespace FerioApp
 
             return (int)TipoUsuario.Visitante;
         }
+        private async void OnAdminPanelClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//controlPage");
 
-      
+        }
+       
 
         // notifica cambios a la UI
         protected void OnPropertyChanged(string propertyName)
@@ -336,6 +344,10 @@ namespace FerioApp
         {
             await DisplayAlert("Foto", "Abrir selector de fotos del dispositivo.\n(under construction)", "OK");
             return;
+        }
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//mainPage");
         }
     }
 }

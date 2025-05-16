@@ -130,5 +130,9 @@ namespace FerioApp
                 await DisplayAlert("Error", "No se pudo actualizar el stand", "OK");
             }
         }
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//mainPage");
+        }
     }
 }

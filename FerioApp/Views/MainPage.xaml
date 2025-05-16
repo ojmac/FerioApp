@@ -1,85 +1,89 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FerioApp.MainPage"
-             BackgroundColor="#F4F4F4">
-    <AbsoluteLayout>
-        
-        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" 
-                    AbsoluteLayout.LayoutFlags="All">
-            <VerticalStackLayout Spacing="25" Padding="30" HorizontalOptions="FillAndExpand">
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="FerioApp.MainPage"
+            BackgroundColor="#F4F4F4">
+   <AbsoluteLayout>
+       
+       <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                   AbsoluteLayout.LayoutFlags="All">
+           <Grid RowSpacing="25" Padding="30">
+               <Grid.RowDefinitions>
+                   <RowDefinition Height="Auto" />
+                   <RowDefinition Height="*" />
+               </Grid.RowDefinitions>
 
-              
-                <Label Text="Bienvenido la Feria del Automóvil"
-                       FontSize="32"
-                       FontAttributes="Bold"
-                       HorizontalTextAlignment="Center"
-                       TextColor="#2C3E50"
-                       Margin="0,10,0,30" />
+               <Label Grid.Row="0"
+                      Text="Bienvenido la Feria del Automóvil"
+                      FontSize="32"
+                      FontAttributes="Bold"
+                      HorizontalTextAlignment="Center"
+                      TextColor="#2C3E50"
+                      Margin="0,10,0,30" />
 
-               
-                <Frame BackgroundColor="White"
-                       CornerRadius="20"
-                       HasShadow="True"
-                       Padding="25"
-                       BorderColor="#D6D6D6">
+               <Frame Grid.Row="1"
+                      BackgroundColor="White"
+                      CornerRadius="20"
+                      HasShadow="True"
+                      Padding="25"
+                      BorderColor="#D6D6D6">
 
-                    <VerticalStackLayout Spacing="20">
+                   <VerticalStackLayout Spacing="20">
 
-                        <Button Text="Chatbot"
-                                BackgroundColor="#FF6F61"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="15"
-                                HeightRequest="55"
-                                Clicked="OnChatbotClicked" />
+                       <Button Text="Chatbot"
+                               BackgroundColor="#FF6F61"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               CornerRadius="15"
+                               HeightRequest="55"
+                               Clicked="OnChatbotClicked" />
 
-                        <Button Text="Expositores"
-                                BackgroundColor="#3A86FF"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="15"
-                                HeightRequest="55"
-                                Clicked="OnStandsClicked" />
+                       <Button Text="Expositores"
+                               BackgroundColor="#3A86FF"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               CornerRadius="15"
+                               HeightRequest="55"
+                               Clicked="OnStandsClicked" />
 
-                        <Button Text="Mapa Interactivo"
-                                BackgroundColor="#8338EC"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="15"
-                                HeightRequest="55"
-                                Clicked="OnMapClicked" />
+                       <Button Text="Mapa Interactivo"
+                               BackgroundColor="#8338EC"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               CornerRadius="15"
+                               HeightRequest="55"
+                               Clicked="OnMapClicked" />
 
-                        <Button Text="Tu Perfil"
-                                BackgroundColor="#FFBE0B"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="15"
-                                HeightRequest="55"
-                                Clicked="OnProfileClicked" />
+                       <Button Text="Tu Perfil"
+                               BackgroundColor="#FFBE0B"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               CornerRadius="15"
+                               HeightRequest="55"
+                               Clicked="OnProfileClicked" />
 
-                        <Button Text="Tu Buzón"
-                                BackgroundColor="#06D6A0"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="15"
-                                HeightRequest="55"
-                                Clicked="OnBuzonClicked" />
+                       <Button Text="Tu Buzón"
+                               BackgroundColor="#06D6A0"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               CornerRadius="15"
+                               HeightRequest="55"
+                               Clicked="OnBuzonClicked" />
 
-                    </VerticalStackLayout>
-                </Frame>
+                   </VerticalStackLayout>
+               </Frame>
 
-            </VerticalStackLayout>
-        </ScrollView>
+           </Grid>
+       </ScrollView>
 
-        
-        <ImageButton Source="logout.png"
-             BackgroundColor="Transparent"
-             WidthRequest="60"
-             HeightRequest="60"
-             CornerRadius="30"
-             Margin="10"
-             Clicked="OnLogoutClicked"
-             AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
-             AbsoluteLayout.LayoutFlags="PositionProportional" />
-    </AbsoluteLayout>
+       <ImageButton Source="logout.png"
+            BackgroundColor="Transparent"
+            WidthRequest="60"
+            HeightRequest="60"
+            CornerRadius="30"
+            Margin="10"
+            Clicked="OnLogoutClicked"
+            AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional" 
+            AutomationProperties.Name="Cerrar sesión"/>
+   </AbsoluteLayout>
 </ContentPage>

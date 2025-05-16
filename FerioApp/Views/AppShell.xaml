@@ -67,10 +67,16 @@
         Route="stands" 
         ContentTemplate="{DataTemplate local:StandsPage}" />
 
+    <!-- Página de Control -->
+    <ShellContent 
+        Title="Panel de Control"
+        Route="controlPage" 
+        ContentTemplate="{DataTemplate local:ControlPage}" />
+
     <!-- Página de info de Stands-modificaciones-->
     <ShellContent 
         Title="Añadir Stands"
-        Route="stands" 
+        Route="Addstands" 
         ContentTemplate="{DataTemplate local:AddStandPage}" />
 
 
@@ -83,8 +89,11 @@
     <!-- Página del mapa -->
     <ShellContent
      Title="Mapa del sitio"
-     Route="mapa" 
+     Route="mapPage" 
      ContentTemplate="{DataTemplate local:MapPage}" />
+    
+  
+
 
 
     <!-- Página de chatbot 

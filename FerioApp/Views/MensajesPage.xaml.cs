@@ -114,5 +114,9 @@ namespace FerioApp
                 await DisplayAlert(mensaje.Empresa, $"{mensaje.Titulo}\n\n{mensaje.Contenido}","OK" );
             }
         }
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//mainPage");
+        }
     }
 }

@@ -14,14 +14,20 @@ namespace FerioApp
         private Usuario _userProfile = UsuarioService.UsuarioActual;
         private readonly MensajesPage _mensajesPage;
         private readonly StandsPage _standsPage;
-        
-     
-        public MainPage(PerfilPage perfilPage, MensajesPage mensajesPage, StandsPage standsPage)
+        private readonly StandService _standService;
+        private readonly MapPage _mapPage;
+        private readonly ControlPage _controlPage;  
+
+
+        public MainPage(PerfilPage perfilPage, MensajesPage mensajesPage, StandsPage standsPage, StandService standService, MapPage mapPage, ControlPage controlPage)
         {
             InitializeComponent();
             _perfilPage = perfilPage;
             _mensajesPage = mensajesPage;
             _standsPage = standsPage;
+            _standService = standService;
+            _mapPage = mapPage;
+            _controlPage = controlPage; 
             ConfigurePage();
             Shell.SetBackgroundColor(this, Colors.Grey);
             Shell.SetTitleColor(this, Colors.White);
@@ -74,7 +80,7 @@ namespace FerioApp
         // Navega al Mapa Interactivo
         private async void OnMapClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MapPage()); 
+            await Navigation.PushAsync(_mapPage); 
         }
 
         // Navega a la Información de Expositores
@@ -86,7 +92,7 @@ namespace FerioApp
             // Navega al Cuadro de Control (para organizadores)
         private async void OnControlPanelClicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new ControlPanelPage()); //a implementar segun tiempo..
+            await Navigation.PushAsync(_controlPage); 
         }
         private async void OnBuzonClicked(object sender, EventArgs e)
         {
@@ -116,6 +122,7 @@ namespace FerioApp
                 }
             }
         }
+    
 
     }
 }

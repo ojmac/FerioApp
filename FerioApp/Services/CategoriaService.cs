@@ -10,11 +10,17 @@ namespace FerioApp.Services
     {
         private readonly HttpClient _httpClient;
 
-        
+        public CategoriaService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
+
         public async Task<List<Categoria>> GetCategoriasAsync()
         {
-            var url = "/api/Stands/Categoria"; 
-            return await _httpClient.GetFromJsonAsync<List<Categoria>>(url);
+            var response = await _httpClient.GetAsync("/api/Stands/categorias");
+            response.EnsureSuccessStatusCode(); // lanza excepción si no es 2xx
+            return await response.Content.ReadFromJsonAsync<List<Categoria>>();
         }
     }
 }

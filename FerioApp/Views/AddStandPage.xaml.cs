@@ -42,6 +42,7 @@ namespace FerioApp
                 new Categoria { Id = 10, Nombre = "Equipamiento Profesional" }
             };
         }
+         
 
         private async void OnAddStandClicked(object sender, EventArgs e)
         {
@@ -86,6 +87,9 @@ namespace FerioApp
 
             }
         }
-
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//mainPage");
+        }
     }
 }

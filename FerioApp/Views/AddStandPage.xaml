@@ -3,44 +3,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FerioApp.AddStandPage"
              BackgroundColor="#F4F4F4">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
 
-            <Label Text="Agregar Nuevo Stand" FontSize="28" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#2C3E50"/>
+    <AbsoluteLayout>
 
-            <Entry x:Name="nombreEntry" Placeholder="Nombre del Stand"/>
-            <Editor x:Name="descripcionEditor" Placeholder="Descripción del Stand" HeightRequest="100"/>
-            <Entry x:Name="ubicacionEntry" Placeholder="Ubicación del Stand"/>
-            <Entry x:Name="horariosEntry" Placeholder="Horarios del Stand"/>
-            <Entry x:Name="enlaceWebEntry" Placeholder="Enlace Web"/>
-            <Entry x:Name="contactoEntry" Placeholder="Contacto"/>
-            <Entry x:Name="logoEntry" Placeholder="Logo (URL)" />
-            <Entry x:Name="usuarioEntry" Placeholder="id del expositor" Keyboard="Numeric"/>
-            <Entry x:Name="posXEntry" Placeholder="Posición X" Keyboard="Numeric"/>
-            <Entry x:Name="posYEntry" Placeholder="Posición Y" Keyboard="Numeric"/>
-            <Entry x:Name="widthEntry" Placeholder="Ancho" Keyboard="Numeric"/>
-            <Entry x:Name="heightEntry" Placeholder="Largo" Keyboard="Numeric"/>
-            <Label Text="Selecciona categorías:" FontAttributes="Bold" />
+        <!-- Botón flotante en la esquina superior izquierda -->
+        <ImageButton Source="atrasr.png"
+                     BackgroundColor="Transparent"
+                     WidthRequest="20"
+                     HeightRequest="20"
+                     CornerRadius="30"
+                     Opacity="1"
+                     Margin="10"
+                     Clicked="OnBackClicked"
+                     AbsoluteLayout.LayoutBounds="0.02,0.02,AutoSize,AutoSize"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     ZIndex="1"
+                     AutomationProperties.Name="Volver atrás" />
 
+        <!-- ScrollView con el contenido -->
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Padding="20" Spacing="20" HorizontalOptions="FillAndExpand">
+               
 
-            <CollectionView x:Name="categoriasCollection" SelectionMode="Single" ItemsSource="{Binding CategoriasDisponibles}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2"/>
-                </CollectionView.ItemsLayout>
+                <Label Text="Agregar Nuevo Stand" FontSize="28" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" TextColor="#2C3E50"/>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal" Padding="5">
-                            <CheckBox IsChecked="{Binding IsSelected}" />
-                            <Label Text="{Binding Nombre}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                <Entry x:Name="nombreEntry" Placeholder="Nombre del Stand" BackgroundColor="#FFFFFF"/>
+                <Editor x:Name="descripcionEditor" Placeholder="Descripción del Stand"
+                        HeightRequest="100" BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="ubicacionEntry" Placeholder="Ubicación del Stand" BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="horariosEntry" Placeholder="Horarios del Stand" BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="enlaceWebEntry" Placeholder="Enlace Web" BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="contactoEntry" Placeholder="Contacto" BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="logoEntry" Placeholder="Logo (URL)" BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="usuarioEntry" Placeholder="id del expositor" Keyboard="Numeric"
+                       BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="posXEntry" Placeholder="Posición X" Keyboard="Numeric"
+                       BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="posYEntry" Placeholder="Posición Y" Keyboard="Numeric"
+                       BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="widthEntry" Placeholder="Ancho" Keyboard="Numeric"
+                       BackgroundColor="#FFFFFF"/>
+                <Entry x:Name="heightEntry" Placeholder="Largo" Keyboard="Numeric"
+                       BackgroundColor="#FFFFFF"/>
+                <Label Text="Selecciona categorías:" FontAttributes="Bold"/>
 
-            <Button Text="Agregar Stand" BackgroundColor="Green" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="55" Clicked="OnAddStandClicked"/>
+                <CollectionView x:Name="categoriasCollection" SelectionMode="Single"
+                                ItemsSource="{Binding CategoriasDisponibles}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2"/>
+                    </CollectionView.ItemsLayout>
 
-            
-        </VerticalStackLayout>
-    </ScrollView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <CheckBox IsChecked="{Binding IsSelected}"/>
+                                <Label Text="{Binding Nombre}" VerticalOptions="Center"
+                                       HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="Agregar Stand" BackgroundColor="Green" TextColor="White"
+                        FontAttributes="Bold" CornerRadius="15" HeightRequest="55"
+                        Clicked="OnAddStandClicked"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </AbsoluteLayout>
 </ContentPage>

@@ -37,5 +37,9 @@ namespace FerioApp
             var usuarioInfo = await _apiService.GetUsuarioAsync(5);
             UsuarioLabel.Text = usuarioInfo;
         }
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//mainPage");
+        }
     }
 }

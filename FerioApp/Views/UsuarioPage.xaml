@@ -2,11 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="FerioApp.UsuarioPage">
-    <Grid>
-        <!-- Aquí se mostrará la información del usuario -->
-        <Label x:Name="UsuarioLabel" 
+    <AbsoluteLayout>
+
+        <ImageButton Source="atrasr.png"
+                  BackgroundColor="Transparent"
+                  WidthRequest="20"
+                  HeightRequest="20"
+                  CornerRadius="30"
+                  Opacity="1"
+                  Margin="10"
+                  Clicked="OnBackClicked"
+                  AbsoluteLayout.LayoutBounds="0.02,0.02,AutoSize,AutoSize"
+                  AbsoluteLayout.LayoutFlags="PositionProportional"
+                  ZIndex="1"
+                  AutomationProperties.Name="Volver atrás" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <!-- Espacio superior -->
+                <RowDefinition Height="Auto"/>
+                <!-- Label ocupará su espacio necesario -->
+            </Grid.RowDefinitions>
+
+            <!-- Aquí se mostrará la información del usuario -->
+            <Label x:Name="UsuarioLabel" 
                Text="Información del usuario aparecerá aquí"
+               Margin="0,50,0,0"    
                VerticalOptions="Center" 
                HorizontalOptions="Center" />
-    </Grid>
+        </Grid>
+    </AbsoluteLayout>
 </ContentPage>

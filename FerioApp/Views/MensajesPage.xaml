@@ -2,31 +2,52 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="FerioApp.MensajesPage"
-             Title="Buzón de Mensajes">
+             Title="Buzón de Mensajes"
+             BackgroundColor="#F4F4F4">
 
-    <StackLayout Padding="10">
-        <!--<Label Text="Buzón de Mensajes" FontSize="24" HorizontalOptions="Center"/>-->
+    <AbsoluteLayout>
 
-        <!-- Lista de mensajes recibidos -->
-        <ListView x:Name="MensajesListView" ItemTapped="OnMensajeTapped" IsEnabled="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding FechaEnvio}" FontSize="12" TextColor="Gray"/>
-                            <Label Text="{Binding Empresa}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding Titulo}" FontAttributes="Bold" FontSize="16"/>
-                            <Label Text="{Binding Contenido}" FontSize="14"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ImageButton Source="atrasr.png"
+                     BackgroundColor="Transparent"
+                     WidthRequest="20"
+                     HeightRequest="20"
+                     CornerRadius="30"
+                     Opacity="1"
+                     Margin="10"
+                     Clicked="OnBackClicked"
+                     AbsoluteLayout.LayoutBounds="0.02,0.02,AutoSize,AutoSize"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     ZIndex="1"
+                     AutomationProperties.Name="Volver atrás" />
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
 
-        <StackLayout x:Name="PuedeEnviarMensajes" Padding="10">
-            <Entry x:Name="TituloEntry" Placeholder="Título del mensaje"/>
-            <Editor x:Name="ContenidoEditor" Placeholder="Contenido del mensaje"/>
-            <Button Text="Enviar Mensaje" Clicked="EnviarMensaje"/>
-        </StackLayout>
-    </StackLayout>
+            <VerticalStackLayout Padding="20,60,20,20" Spacing="20" HorizontalOptions="FillAndExpand">
+                <!--<Label Text="Buzón de Mensajes" FontSize="24" HorizontalOptions="Center"/>-->
+
+
+                <!-- Lista de mensajes recibidos -->
+                <ListView x:Name="MensajesListView" ItemTapped="OnMensajeTapped" IsEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding FechaEnvio}" FontSize="12" TextColor="Gray"/>
+                                    <Label Text="{Binding Empresa}" FontSize="14" TextColor="Black"/>
+                                    <Label Text="{Binding Titulo}" FontAttributes="Bold" FontSize="16"/>
+                                    <Label Text="{Binding Contenido}" FontSize="14"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout x:Name="PuedeEnviarMensajes" Padding="10">
+                    <Entry x:Name="TituloEntry" Placeholder="Título del mensaje"/>
+                    <Editor x:Name="ContenidoEditor" Placeholder="Contenido del mensaje"/>
+                    <Button Text="Enviar Mensaje" Clicked="EnviarMensaje"/>
+                </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
 </ContentPage>

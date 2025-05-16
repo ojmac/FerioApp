@@ -1,0 +1,99 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FerioApp.ControlPage"
+             Title="Panel de Control"
+             BackgroundColor="#F4F4F4">
+
+    <AbsoluteLayout>
+
+        <ImageButton Source="atrasr.png"
+                  BackgroundColor="Transparent"
+                  WidthRequest="20"
+                  HeightRequest="20"
+                  CornerRadius="30"
+                  Opacity="1"
+                  Margin="10"
+                  Clicked="OnBackClicked"
+                  AbsoluteLayout.LayoutBounds="0.02,0.02,AutoSize,AutoSize"
+                  AbsoluteLayout.LayoutFlags="PositionProportional"
+                  ZIndex="1"
+                  AutomationProperties.Name="Volver atrás" />
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
+
+            <VerticalStackLayout Padding="20,60,20,20" Spacing="10">
+
+
+
+                <!-- Selector de pestañas -->
+                <Picker x:Name="tabsPicker"
+                Title="Selecciona sección"
+                SelectedIndexChanged="OnTabChanged">
+                    <Picker.Items>
+                        <x:String>Usuarios</x:String>
+                        <x:String>Stands</x:String>
+                        <x:String>Mensajes</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!-- Usuarios -->
+                <StackLayout x:Name="usuariosView" IsVisible="True">
+                    <Label Text="Usuarios" FontSize="20" FontAttributes="Bold" />
+                    <Entry Placeholder="Buscar usuario..." TextChanged="OnSearchTextChanged"/>
+                    <CollectionView x:Name="usuariosCollection">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Gray" Margin="5">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Nombre}" />
+                                        <Label Text="{Binding Email}" />
+                                        <Label Text="{Binding TipoUsuario}" />
+                                        <Label Text="{Binding Empresa}"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <!-- Stands -->
+                <StackLayout x:Name="standsView" IsVisible="False">
+                    <Label Text="Stands" FontSize="20" FontAttributes="Bold" />
+                    <Entry Placeholder="Buscar stand..." TextChanged="OnStandSearchTextChanged"/>
+                    <CollectionView x:Name="standsCollection">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="DarkOliveGreen" Margin="5">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Nombre}" />
+                                        <Label Text="{Binding Descripcion}" />
+                                        <Label Text="{Binding Ubicacion}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <!-- Mensajes -->
+                <StackLayout x:Name="mensajesView" IsVisible="False">
+                    <Label Text="Mensajes" FontSize="20" FontAttributes="Bold" />
+                    <Entry Placeholder="Buscar mensaje por empresa..." TextChanged="OnMensajeSearchTextChanged"/>
+                    <CollectionView x:Name="mensajesCollection">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="DarkRed" Margin="5">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Titulo}" />
+                                        <Label Text="{Binding Contenido}" />
+                                        <Label Text="{Binding FechaEnvio}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>

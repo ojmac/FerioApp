@@ -3,85 +3,111 @@
              x:Class="FerioApp.PerfilPage"
              Title="Editar Perfil"
              BackgroundColor="#F4F4F4">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
 
-          
-            <!--<Label Text="Perfil de Usuario"
+    <AbsoluteLayout>
+
+        <ImageButton Source="atrasr.png"
+                  BackgroundColor="Transparent"
+                  WidthRequest="20"
+                  HeightRequest="20"
+                  CornerRadius="30"
+                  Opacity="1"
+                  Margin="10"
+                  Clicked="OnBackClicked"
+                  AbsoluteLayout.LayoutBounds="0.02,0.02,AutoSize,AutoSize"
+                  AbsoluteLayout.LayoutFlags="PositionProportional"
+                  ZIndex="1"
+                  AutomationProperties.Name="Volver atrás" />
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Padding="20,60,20,20" Spacing="20" HorizontalOptions="FillAndExpand">
+
+
+                <!--<Label Text="Perfil de Usuario"
                    FontSize="28"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    TextColor="#2C3E50" />-->
 
-           
-            <Frame BackgroundColor="White" CornerRadius="10" Padding="15" BorderColor="#D6D6D6">
-                <Grid>
-                    
-                    <Image x:Name="profilePhoto" 
+
+
+
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="15" BorderColor="#D6D6D6">
+                    <Grid>
+
+                        <Image x:Name="profilePhoto" 
                Source="{Binding FotoPerfil}"  
                Aspect="AspectFill" 
                HeightRequest="100" 
                WidthRequest="100" 
                VerticalOptions="Start" 
                HorizontalOptions="End">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnProfilePhotoTapped" NumberOfTapsRequired="1" />
-                        </Image.GestureRecognizers>
-                    </Image>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnProfilePhotoTapped" NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
+                        <VerticalStackLayout Spacing="15">
+
+                            <Label Text="Información Personal" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50" />
+
+                            <Label Text="Nombre:" FontSize="14" TextColor="#2C3E50" />
+                            <Entry Text="{Binding Nombre}" IsReadOnly="True" />
+
+                            <Label Text="Email:" FontSize="14" TextColor="#2C3E50" />
+                            <Entry Text="{Binding Email}" IsReadOnly="True" />
+
+
+                            <Label Text="Teléfono:" FontSize="14" TextColor="#2C3E50" />
+                            <Entry Text="{Binding Telefono, Mode=TwoWay}" Placeholder="Ej. +34 123 456 789" />
+
+
+                            <Label Text="Dirección:" FontSize="14" TextColor="#2C3E50" />
+                            <Entry Text="{Binding Direccion, Mode=TwoWay}" Placeholder="Introduce tu dirección" />
+
+                            <Label Text="Empresa:" FontSize="14" TextColor="#2C3E50" />
+                            <Entry Text="{Binding Empresa, Mode=TwoWay}" Placeholder="Nombre de la Empresa" />
+
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+
+
+                <!-- Información Adicional para Expositores u Organizadores -->
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="15" BorderColor="#D6D6D6" IsVisible="{Binding IsExpositorOrOrganizer}">
                     <VerticalStackLayout Spacing="15">
-                       
-                        <Label Text="Información Personal" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50" />
-
-                        <Label Text="Nombre:" FontSize="14" TextColor="#2C3E50" />
-                        <Entry Text="{Binding Nombre}" IsReadOnly="True" />
-
-                        <Label Text="Email:" FontSize="14" TextColor="#2C3E50" />
-                        <Entry Text="{Binding Email}" IsReadOnly="True" />
-
-                       
-                        <Label Text="Teléfono:" FontSize="14" TextColor="#2C3E50" />
-                        <Entry Text="{Binding Telefono, Mode=TwoWay}" Placeholder="Ej. +34 123 456 789" />
-                       
-
-                        <Label Text="Dirección:" FontSize="14" TextColor="#2C3E50" />
-                        <Entry Text="{Binding Direccion, Mode=TwoWay}" Placeholder="Introduce tu dirección" />
-
-                        <Label Text="Empresa:" FontSize="14" TextColor="#2C3E50" />
-                        <Entry Text="{Binding Empresa, Mode=TwoWay}" Placeholder="Nombre de la Empresa" />
-             
-                    </VerticalStackLayout>
-                </Grid>
-            </Frame>
-
-
-
-            <!-- Información Adicional para Expositores u Organizadores -->
-            <Frame BackgroundColor="White" CornerRadius="10" Padding="15" BorderColor="#D6D6D6" IsVisible="{Binding IsExpositorOrOrganizer}">
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="Id de su Stand" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50" />
-                    <Entry Text="{Binding StandId, Mode=TwoWay}" Placeholder="Id del Stand" Keyboard="Numeric" />
-                    <Button Text="Editar Stand" 
+                        <Label Text="Id de su Stand" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50" />
+                        <Entry Text="{Binding StandId, Mode=TwoWay}" Placeholder="Id del Stand" Keyboard="Numeric" />
+                        <Button Text="Editar Stand" 
                         BackgroundColor="#2980B9" 
                         TextColor="White" 
                         FontAttributes="Bold" 
                         CornerRadius="15" 
                         HeightRequest="50"
                         Clicked="OnModifyStandClicked"/>
-                </VerticalStackLayout>
-            </Frame>
+                    </VerticalStackLayout>
+                </Frame>
 
-            <!-- Opciones adicionales solo para organizadores -->
-            <Frame BackgroundColor="White" CornerRadius="10" Padding="15" BorderColor="#D6D6D6" IsVisible="{Binding IsOrganizer}">
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="Opciones de Administrador" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50" />
-                    <!-- Campos adicionales o botones administrativos a implementar  a furuturo-->
-                    <Label Text="Acceso completo a todas las configuraciones." FontSize="14" TextColor="#2C3E50" />
-                </VerticalStackLayout>
-            </Frame>
+                <!-- Opciones adicionales solo para organizadores -->
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="15" BorderColor="#D6D6D6" IsVisible="{Binding IsOrganizer}">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Opciones de Administrador" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50" />
+                        <!-- Campos adicionales o botones administrativos a implementar  a furuturo-->
+                        <Label Text="Acceso completo a todas las configuraciones." FontSize="14" TextColor="#2C3E50" />
+                        <Button Text="Panel de Control"
+                            BackgroundColor="#E74C3C"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="15"
+                            HeightRequest="50"
+                            Clicked="OnAdminPanelClicked"/>
 
-            <!-- Botón para guardar cambios -->
-            <Button Text="Guardar Cambios"
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Botón para guardar cambios -->
+                <Button Text="Guardar Cambios"
                     BackgroundColor="#3A86FF"
                     TextColor="White"
                     FontAttributes="Bold"
@@ -89,8 +115,9 @@
                     HeightRequest="55"
                     Clicked="OnSaveClicked" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
 </ContentPage>
 
 

@@ -4,65 +4,83 @@
              x:Class="FerioApp.StandsPage"
              Title="Expositores"
              BackgroundColor="#F4F4F4">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
 
-            <!-- Título de la página -->
-            <Label Text="Stands Salón del Automovil 2025"
+
+    <AbsoluteLayout>
+
+        <ImageButton Source="atrasr.png"
+                     BackgroundColor="Transparent"
+                     WidthRequest="20"
+                     HeightRequest="20"
+                     CornerRadius="30"
+                     Opacity="1"
+                     Margin="10"
+                     Clicked="OnBackClicked"
+                     AbsoluteLayout.LayoutBounds="0.02,0.02,AutoSize,AutoSize"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     ZIndex="1"
+                     AutomationProperties.Name="Volver atrás" />
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+    AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Padding="20" Spacing="20" HorizontalOptions="FillAndExpand">
+
+                <!-- Título de la página -->
+                <Label Text="Stands Salón del Automovil 2025"
                    FontSize="28"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    TextColor="#2C3E50" />
 
 
-            <CollectionView ItemsSource="{Binding Stands}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BackgroundColor="White"
+
+                <CollectionView ItemsSource="{Binding Stands}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White"
                    CornerRadius="15"
                    Padding="15"
                    Margin="10"
                    HasShadow="True"
                    BorderColor="#E0E0E0">
 
-                            <VerticalStackLayout Spacing="10">
-                                <Grid ColumnDefinitions="Auto, *" ColumnSpacing="15">
-                                    <!-- Logo -->
-                                    <Image Source="{Binding Logo, FallbackValue='logo.jpg'}"
+                                <VerticalStackLayout Spacing="10">
+                                    <Grid ColumnDefinitions="Auto, *" ColumnSpacing="15">
+                                        <!-- Logo -->
+                                        <Image Source="{Binding Logo, FallbackValue='logo.jpg'}"
                                HeightRequest="80"
                                WidthRequest="80"
                                Aspect="AspectFit"
                                VerticalOptions="Start" />
 
-                                    <!-- Datos principales -->
-                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
-                                        <Label Text="{Binding Nombre}"
+                                        <!-- Datos principales -->
+                                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                            <Label Text="{Binding Nombre}"
                                    FontSize="18"
                                    FontAttributes="Bold"
                                    TextColor="#2C3E50" />
 
-                                        <Label Text="{Binding Descripcion}"
+                                            <Label Text="{Binding Descripcion}"
                                    FontSize="13"
                                    TextColor="#666666"
                                    LineBreakMode="WordWrap" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+
+                                    <!-- Datos secundarios -->
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="{Binding Ubicacion, StringFormat='Ubicación: {0}'}"
+                               FontSize="12"
+                               TextColor="#888888" />
+                                        <Label Text="{Binding Horarios, StringFormat='Horarios: {0}'}"
+                               FontSize="12"
+                               TextColor="#888888" />
+                                        <Label Text="{Binding Contacto, StringFormat='Contacto: {0}'}"
+                               FontSize="12"
+                               TextColor="#888888" />
                                     </VerticalStackLayout>
-                                </Grid>
 
-                                <!-- Datos secundarios -->
-                                <VerticalStackLayout Spacing="2">
-                                    <Label Text="{Binding Ubicacion, StringFormat='Ubicación: {0}'}"
-                               FontSize="12"
-                               TextColor="#888888" />
-                                    <Label Text="{Binding Horarios, StringFormat='Horarios: {0}'}"
-                               FontSize="12"
-                               TextColor="#888888" />
-                                    <Label Text="{Binding Contacto, StringFormat='Contacto: {0}'}"
-                               FontSize="12"
-                               TextColor="#888888" />
-                                </VerticalStackLayout>
-
-                                <!-- Botón -->
-                                <Button Text="Ir a la Web"
+                                    <!-- Botón -->
+                                    <Button Text="Ir a la Web"
                             Command="{Binding ViewStandCommand}"
                             CommandParameter="{Binding Id}"
                             BackgroundColor="#5B2CFA"
@@ -72,21 +90,22 @@
                             CornerRadius="10"
                             HeightRequest="40"
                             HorizontalOptions="Fill" />
-                            </VerticalStackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
 
-            <!--Solo visible para administradores -->
-            <Button Text="Agregar Stand" IsVisible="{Binding IsAdmin}" BackgroundColor="#28A745" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="55" Clicked="OnAddStandClicked"/>
+                <!--Solo visible para administradores -->
+                <Button Text="Agregar Stand" IsVisible="{Binding IsAdmin}" BackgroundColor="#28A745" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="55" Clicked="OnAddStandClicked"/>
 
-            <Label Text="Stand a Eliminar:" FontAttributes="Bold" IsVisible="{Binding IsAdmin}"/>
-            <Entry x:Name="standIdToDeleteEntry" Placeholder="ID del Stand a eliminar" Keyboard="Numeric" IsVisible="{Binding IsAdmin}"/>
-            <Button Text="Eliminar Stand" IsVisible="{Binding IsAdmin}" BackgroundColor="#FF5733" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="55" Clicked="OnRemoveStandClicked"/>
-         
-        </VerticalStackLayout>
-    </ScrollView>
+                <Label Text="Stand a Eliminar:" FontAttributes="Bold" IsVisible="{Binding IsAdmin}"/>
+                <Entry x:Name="standIdToDeleteEntry" Placeholder="ID del Stand a eliminar" Keyboard="Numeric" IsVisible="{Binding IsAdmin}" BackgroundColor="White"/>
+                <Button Text="Eliminar Stand" IsVisible="{Binding IsAdmin}" BackgroundColor="#FF5733" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="55" Clicked="OnRemoveStandClicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
 </ContentPage>
 
