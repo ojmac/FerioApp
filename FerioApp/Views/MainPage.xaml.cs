@@ -44,7 +44,7 @@ namespace FerioApp
         // Navega al Chatbot
         private async void OnChatbotClicked(object sender, EventArgs e)
         {
-            // await Navigation.PushAsync(new ChatbotPage()); 
+             await Shell.Current.GoToAsync("//chatPage"); 
 
         }
         // Navega al Perfil
@@ -62,9 +62,9 @@ namespace FerioApp
 
             
             var userRole = GetUserRoleFromToken(token);
-            _userProfile.Role = userRole; 
+            _userProfile.Role = userRole;
 
-            await Navigation.PushAsync(_perfilPage);
+            await Shell.Current.GoToAsync("//perfilPage");
         }
 
         private string GetUserRoleFromToken(string token)
@@ -80,23 +80,24 @@ namespace FerioApp
         // Navega al Mapa Interactivo
         private async void OnMapClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(_mapPage); 
+            await Shell.Current.GoToAsync("//mapPage");
         }
 
         // Navega a la Información de Expositores
         private async void OnStandsClicked(object sender, EventArgs e)
         {
-           await Navigation.PushAsync(_standsPage); 
+            await Shell.Current.GoToAsync("//standsPage");
         }
 
             // Navega al Cuadro de Control (para organizadores)
         private async void OnControlPanelClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(_controlPage); 
+
+            await Shell.Current.GoToAsync("//controlPage");
         }
         private async void OnBuzonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(_mensajesPage); 
+            await Shell.Current.GoToAsync("//mensajesPage"); 
         }
         private async void OnLogoutClicked(object sender, EventArgs e)
         {

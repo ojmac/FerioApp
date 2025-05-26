@@ -47,7 +47,7 @@ namespace FerioApp
             if (success)
             {
                 await Shell.Current.GoToAsync("//mainPage");
-                //await Shell.Current.GoToAsync("//MensajesPage");
+               
             }
             else
             {

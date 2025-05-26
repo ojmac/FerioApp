@@ -19,11 +19,15 @@ namespace FerioApp
 
             BindingContext = this;
 
+
             LoadStands();
 
             var tapGesture = new TapGestureRecognizer();
             tapGesture.Tapped += OnMapTapped;
+            MapView.GestureRecognizers.Clear(); // Limpiar gestos anteriores
             MapView.GestureRecognizers.Add(tapGesture);
+            Shell.SetBackgroundColor(this, Color.FromArgb("#8338EC"));
+            Shell.SetTitleColor(this, Colors.White);
         }
 
         private async void LoadStands()
@@ -109,6 +113,11 @@ namespace FerioApp
         {
             SearchPanel.IsVisible = !SearchPanel.IsVisible;
         }
-  
+        public async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//mainPage");
+        }
+
+
     }
 }

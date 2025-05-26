@@ -12,8 +12,6 @@ namespace FerioApp
         {
             var builder = MauiApp.CreateBuilder();
 
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("TU-CLAVE-AQUI");
-
             var backendBaseUri = new Uri("https://localhost:7117");
             var backendTimeout = TimeSpan.FromSeconds(30);
 
@@ -25,6 +23,7 @@ namespace FerioApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("Poppins-Black.ttf", "PoppinsBlack");
                     fonts.AddFont("Poppins-semiBold.ttf", "PoppinsSemiBold");
+                    fonts.AddFont("Poppins-Bold.ttf", "PoppinsBold");
                 })
                 .ConfigureSyncfusionCore(); 
 
@@ -62,6 +61,11 @@ namespace FerioApp
                 client.Timeout = backendTimeout;
             });
             builder.Services.AddHttpClient<ControlPage>(client =>
+            {
+                client.BaseAddress = backendBaseUri;
+                client.Timeout = backendTimeout;
+            });
+            builder.Services.AddHttpClient<ChatPage>(client =>
             {
                 client.BaseAddress = backendBaseUri;
                 client.Timeout = backendTimeout;

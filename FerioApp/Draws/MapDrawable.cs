@@ -15,8 +15,7 @@ namespace FerioApp.Draws
         public float Scale { get; private set; }
         public float OffsetX { get; private set; }
         public float OffsetY { get; private set; }
-        private Stand _origen;
-        private Stand _destino;
+      
         private const float CellSize = 0.5f;
         private List<GridCell> _camino;
 

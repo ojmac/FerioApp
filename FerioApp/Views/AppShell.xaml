@@ -58,13 +58,13 @@
     <!-- Página de avisos -->
     <ShellContent 
         Title="Avisos"
-        Route="mensajes" 
+        Route="mensajesPage" 
         ContentTemplate="{DataTemplate local:MensajesPage}" />
 
     <!-- Página de info de Stands -->
     <ShellContent 
         Title="Stands"
-        Route="stands" 
+        Route="standsPage" 
         ContentTemplate="{DataTemplate local:StandsPage}" />
 
     <!-- Página de Control -->
@@ -76,14 +76,14 @@
     <!-- Página de info de Stands-modificaciones-->
     <ShellContent 
         Title="Añadir Stands"
-        Route="Addstands" 
+        Route="addstandsPage" 
         ContentTemplate="{DataTemplate local:AddStandPage}" />
 
 
     <!-- Página de info de perfil usuario y modificaciones -->
     <ShellContent
          Title="MiPerfil"
-         Route="perfil" 
+         Route="perfilPage" 
          ContentTemplate="{DataTemplate local:PerfilPage}" />
 
     <!-- Página del mapa -->
@@ -92,14 +92,11 @@
      Route="mapPage" 
      ContentTemplate="{DataTemplate local:MapPage}" />
     
-  
 
-
-
-    <!-- Página de chatbot 
+    <!--Página de chatbot -->
     <ShellContent 
-        Title="Home"
-        Route="chatbot" 
-        ContentTemplate="{DataTemplate local:ChatbotPage}" />-->
+        Title="Ferio"
+        Route="chatPage" 
+        ContentTemplate="{DataTemplate local:ChatPage}" />
 
 </Shell>

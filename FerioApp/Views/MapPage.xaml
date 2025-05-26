@@ -8,8 +8,8 @@
         <!-- Mapa principal -->
         <GraphicsView x:Name="MapView"
                       Drawable="{Binding MapDrawable}"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand" />
+                      HorizontalOptions="Fill"
+                      VerticalOptions="Fill" />
 
         <!-- Botón tipo lupa en la esquina -->
         <Button x:Name="OpenSearchButton"
@@ -41,6 +41,19 @@
             <Button Text="Ver ruta"
                     Clicked="OnVerRutaClicked" />
         </StackLayout>
+
+
+        <ImageButton Source="atrasr.png"
+             BackgroundColor="Transparent"
+             WidthRequest="30"
+             HeightRequest="30"
+             CornerRadius="30"
+             Margin="15"
+             Clicked="OnBackClicked"
+             HorizontalOptions="Start"
+             VerticalOptions="Start"
+             AutomationProperties.Name="Volver atrás" />
+
     </Grid>
 </ContentPage>
 

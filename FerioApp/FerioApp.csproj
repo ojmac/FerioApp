@@ -62,6 +62,10 @@
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 
+		<MauiXaml Update="Views\ChatPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+
 		<MauiXaml Update="Views\LoginPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

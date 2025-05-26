@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FerioApp.ChatPage"
+             Title="Ferio Chatbot"
+             BackgroundColor="#DEE1E6">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Limpiar" Clicked="LimpiarConversacion_Clicked" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <AbsoluteLayout>
+
+        <Image
+            Source="ferio7.jpg"
+            HeightRequest="140"
+            Aspect="AspectFit"
+            SemanticProperties.Description="dot net bot in a race car number eight"
+            AbsoluteLayout.LayoutBounds="0.5,0,AutoSize,AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+        <ImageButton Source="atrasr.png"
+            BackgroundColor="Transparent"
+            WidthRequest="20"
+            HeightRequest="20"
+            CornerRadius="30"
+            Opacity="1"
+            Margin="10"
+            Clicked="OnBackClicked"
+            AbsoluteLayout.LayoutBounds="0.02,0.02,AutoSize,AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            ZIndex="1"
+            AutomationProperties.Name="Volver atrás" />
+
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Padding="20,180,20,20" Spacing="20" HorizontalOptions="Fill">
+                <Label Text="Asistente de Feria" FontSize="24" HorizontalOptions="Center"/>
+
+                <!-- 🧠 Zona de conversación dinámica -->
+                <VerticalStackLayout x:Name="ChatContainer" Spacing="10" />
+
+                <!-- 🎤 Entrada del usuario -->
+                <Editor x:Name="PreguntaInput" Placeholder="Haz una pregunta..." HeightRequest="100" BackgroundColor="White"/>
+                <Button Text="Enviar" Clicked="Enviar_Clicked" />
+
+                <!-- Eliminamos el Label de respuesta única porque ahora mostramos múltiples mensajes -->
+                <!-- <Label x:Name="RespuestaLabel" Text="" FontSize="16" TextColor="DarkGreen" /> -->
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>
