@@ -11,18 +11,34 @@
                       HorizontalOptions="Fill"
                       VerticalOptions="Fill" />
 
-        <!-- Botón tipo lupa en la esquina -->
-        <Button x:Name="OpenSearchButton"
-                Text="🔍"
-                FontSize="32"
-                WidthRequest="100"
-                HeightRequest="100"
-                BackgroundColor="White"
-                CornerRadius="25"
-                HorizontalOptions="End"
-                VerticalOptions="Start"
-                Margin="10"
-                Clicked="OnOpenSearchClicked" />
+        <!-- Botones en la esquina superior derecha -->
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     Margin="10"
+                     Spacing="10">
+
+            <!-- Botón para limpiar ruta -->
+            <Button x:Name="ClearRouteButton"
+                    Text="❌"
+                    FontSize="20"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    BackgroundColor="White"
+                    CornerRadius="25"
+                    Clicked="OnClearRouteClicked" />
+
+
+            <!-- Botón tipo lupa -->
+            <Button x:Name="OpenSearchButton"
+                    Text="🔍"
+                    FontSize="20"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    BackgroundColor="White"
+                    CornerRadius="25"
+                    Clicked="OnOpenSearchClicked" />
+        </StackLayout>
 
         <!-- Panel de búsqueda oculto al principio -->
         <StackLayout x:Name="SearchPanel"
@@ -42,7 +58,6 @@
                     Clicked="OnVerRutaClicked" />
         </StackLayout>
 
-
         <ImageButton Source="atrasr.png"
              BackgroundColor="Transparent"
              WidthRequest="30"
@@ -56,4 +71,3 @@
 
     </Grid>
 </ContentPage>
-

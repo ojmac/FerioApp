@@ -17,8 +17,8 @@ namespace FerioApp.Draws
         public float OffsetY { get; private set; }
       
         private const float CellSize = 0.5f;
-        private List<GridCell> _camino;
-
+        public List<GridCell> _camino { get; set; }
+      
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
