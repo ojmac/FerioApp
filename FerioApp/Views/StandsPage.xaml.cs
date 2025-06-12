@@ -68,7 +68,7 @@ namespace FerioApp
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("🔥 ERROR al navegar a AddStandPage:");
+                Debug.WriteLine(" ERROR al navegar a AddStandPage:");
                 Debug.WriteLine(ex.Message);
                 await DisplayAlert("Error", ex.Message, "OK");
             }

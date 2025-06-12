@@ -12,25 +12,26 @@ namespace FerioApp
         public MapPage(StandService standService)
         {
             InitializeComponent();
-
             _standService = standService;
-
             MapDrawable = new MapDrawable();
-
             BindingContext = this;
 
-
-            LoadStands();
-
-            var tapGesture = new TapGestureRecognizer();
-            tapGesture.Tapped += OnMapTapped;
-            MapView.GestureRecognizers.Clear(); // Limpiar gestos anteriores
-            MapView.GestureRecognizers.Add(tapGesture);
             Shell.SetBackgroundColor(this, Color.FromArgb("#8338EC"));
             Shell.SetTitleColor(this, Colors.White);
         }
 
-        private async void LoadStands()
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await LoadStands();
+
+            var tapGesture = new TapGestureRecognizer();
+            tapGesture.Tapped += OnMapTapped;
+            MapView.GestureRecognizers.Clear();
+            MapView.GestureRecognizers.Add(tapGesture);
+        }
+
+        private async Task LoadStands()
         {
             try
             {
@@ -39,16 +40,19 @@ namespace FerioApp
                 {
                     MapDrawable.Stands = stands;
                     MapView.Drawable = MapDrawable;
+                    MapView.Invalidate(); // Forzar redibujado
                     Debug.WriteLine($"Se cargaron {stands.Count} stands.");
                 }
                 else
                 {
                     Debug.WriteLine("No se encontraron stands.");
+                    await DisplayAlert("Error", "No se encontraron stands para mostrar.", "OK");
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error al cargar los stands: {ex.Message}");
+                await DisplayAlert("Error", "Hubo un problema al cargar los stands.", "OK");
             }
         }
 
@@ -60,7 +64,6 @@ namespace FerioApp
             float px = (float)point.Value.X;
             float py = (float)point.Value.Y;
 
-            // Usamos las propiedades de escala y offset del MapDrawable
             float x = (px - MapDrawable.OffsetX) / MapDrawable.Scale;
             float y = (py - MapDrawable.OffsetY) / MapDrawable.Scale;
 
@@ -73,17 +76,18 @@ namespace FerioApp
                 await DisplayAlert("Stand seleccionado", $"{stand.Nombre}\n{stand.Descripcion}", "Cerrar");
             }
         }
+
         private void OnVerRutaClicked(object sender, EventArgs e)
         {
-            StandSearchEntry.Focus();
             var nombreDestino = StandSearchEntry.Text?.Trim().ToLower();
             Debug.WriteLine("🟢 Se hizo clic en el botón Ver Ruta");
+
             if (string.IsNullOrWhiteSpace(nombreDestino))
             {
                 DisplayAlert("Error", "Introduce un nombre de stand válido.", "OK");
                 return;
             }
-       
+
             var origen = MapDrawable.Stands.FirstOrDefault(s =>
                 s.CategoriaIds.Any(c => c.Nombre != null && c.Nombre.ToLower().Contains("información")));
 
@@ -101,23 +105,30 @@ namespace FerioApp
                 DisplayAlert("No encontrado", $"No se encontró el stand que contiene: \"{nombreDestino}\"", "OK");
                 return;
             }
+
             Debug.WriteLine($"🟡 Origen: {origen.Nombre}, Destino: {destino.Nombre}");
             MapDrawable.DefinirRuta(origen, destino);
             MapView.Invalidate();
             SearchPanel.IsVisible = false;
             StandSearchEntry.Text = string.Empty;
-
         }
 
         private void OnOpenSearchClicked(object sender, EventArgs e)
         {
             SearchPanel.IsVisible = !SearchPanel.IsVisible;
         }
+
+        private void OnClearRouteClicked(object sender, EventArgs e)
+        {
+            MapDrawable._camino = null; // Limpiar la ruta
+            MapView.Invalidate(); // Redibujar el mapa
+        }
+
+   
+
         public async void OnBackClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//mainPage");
         }
-
-
     }
 }

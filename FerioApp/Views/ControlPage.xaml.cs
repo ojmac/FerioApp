@@ -51,6 +51,13 @@ namespace FerioApp
         //}
         private async Task CargarUsuarios()
         {
+            var token = UsuarioService.UsuarioActual?.Token;
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                Debug.WriteLine("[Usuarios] No hay token disponible. El usuario no está autenticado.");
+                return;
+            }
+            _httpclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var response = await _httpclient.GetAsync("/api/usuarios");
             Debug.WriteLine($"[Usuarios] Código: {response.StatusCode}");
 

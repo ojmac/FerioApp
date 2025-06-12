@@ -24,6 +24,9 @@ namespace FerioApp
                     fonts.AddFont("Poppins-Black.ttf", "PoppinsBlack");
                     fonts.AddFont("Poppins-semiBold.ttf", "PoppinsSemiBold");
                     fonts.AddFont("Poppins-Bold.ttf", "PoppinsBold");
+                    fonts.AddFont("Poppins-Regular.ttf", "PoppinsRegular");
+                    fonts.AddFont("Poppins-Italic.ttf", "PoppinsItalic");
+                    fonts.AddFont("Poppins-BoldItalic.ttf", "PoppinsBoldItalic");
                 })
                 .ConfigureSyncfusionCore(); 
 
@@ -84,14 +87,6 @@ namespace FerioApp
             builder.Services.AddTransient<MensajesPage>();
             builder.Services.AddTransient<MapPage>();
 
-            builder.ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("Poppins-Regular.ttf", "PoppinsRegular");
-                fonts.AddFont("Poppins-Bold.ttf", "PoppinsBold");
-                fonts.AddFont("Poppins-Italic.ttf", "PoppinsItalic");
-                fonts.AddFont("Poppins-BoldItalic.ttf", "PoppinsBoldItalic");
-            });
-            
             return builder.Build();
         }
     }
